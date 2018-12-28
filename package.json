@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babel-node": "babel-node",
+    "webpack": "webpack",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
     "test": "test",
@@ -24,14 +25,13 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.11.0"
-  },
-  "dependencies": {
-    "babel-loader": "^8.0.4"
+    "eslint-plugin-import": "^2.11.0",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
   }
 }

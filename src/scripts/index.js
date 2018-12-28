@@ -11,7 +11,9 @@ const handleData = (event) => {
   }
 
   const reader = new FileReader();
-  reader.addEventListener('load', scaleAndCrope);
+  const maxImageW = 300;
+  const maxImage = 300;
+  reader.addEventListener('load', scaleAndCrope(maxImageW, maxImage));
   reader.addEventListener('error', (e) => {
     showMessage(e.target.error.message);
   });

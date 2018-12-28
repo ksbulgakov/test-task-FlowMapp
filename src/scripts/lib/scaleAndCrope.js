@@ -4,7 +4,7 @@ import CanvasPreview from '../entities/CanvasPreview';
 import Frame from '../entities/Frame';
 import ImageObj from '../entities/ImageObj';
 
-export default (ev, maxW = 300, maxH = 300) => new Promise((resolve) => {
+export default (maxW = 300, maxH = 300) => ev => new Promise((resolve) => {
   const imageEl = document.createElement('img');
   imageEl.src = ev.target.result;
 
@@ -24,7 +24,7 @@ export default (ev, maxW = 300, maxH = 300) => new Promise((resolve) => {
   const backgroundColor = '#8a2be2';
   const frameHeight = 300;
   const framewidth = 300;
-  const frameColor = 'blue';
+  const frameColor = 'black';
 
   const image = new ImageObj(imageEl);
   const frame = new Frame(frameColor, framewidth, frameHeight);
