@@ -1,0 +1,37 @@
+{
+  "name": "test-task-flowmapp",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build",
+    "test": "test",
+    "eslint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksbulgakov/test-task-FlowMapp.git"
+  },
+  "author": "Konstantin Bulgakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksbulgakov/test-task-FlowMapp/issues"
+  },
+  "homepage": "https://github.com/ksbulgakov/test-task-FlowMapp#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.11.0"
+  },
+  "dependencies": {
+    "babel-loader": "^8.0.4"
+  }
+}

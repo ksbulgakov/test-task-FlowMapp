@@ -1,0 +1,7 @@
+/node_modules/
+__tests__
+coverage
+dist
+*.log
+.vscode
+jsconfig.json

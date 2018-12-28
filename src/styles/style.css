@@ -1,0 +1,31 @@
+body {
+  background-color:#cccccc !important;
+}
+
+canvas {
+  margin: auto;
+  margin-top: 10px;
+  border: solid;
+  border-color: brown;
+}
+
+.btn {
+  width: 100%;
+}
+
+#uploader {
+  margin-top: 50px;
+}
+
+#first-col {
+  background-color: #8a2be2;
+}
+
+#control-panel {
+  align-items: center;
+  background-color: rgb(43, 226, 134);
+}
+
+#canvas-preview {
+  width: 100%;
+}
