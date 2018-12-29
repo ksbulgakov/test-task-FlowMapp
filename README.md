@@ -6,7 +6,7 @@
 ## Discription
 
 A task from FlowMapp.
-The task is to build a function for croping and resizing images. the function should return a promise with croped image's blob.
+The task is to build a function for croping and resizing images. The function should return a promise with croped image's blob.
 
 To look at the result locally input into a terminal:
 
@@ -18,7 +18,7 @@ And in the application folder:
 ```
   make build
 ```
-Then open in your browser index.itml file.
+Then open in your browser index.html file.
 
 A link to example video:
 
