@@ -10,12 +10,16 @@ The task is to build a function for croping and resizing images. the function sh
 
 To look at the result locally input into a terminal:
 
-```sh
+```
   git clone https://github.com/ksbulgakov/test-task-FlowMapp.git
 ```
 
 And in the application folder:
-```sh
+```
   make build
 ```
 Then open in your browser index.itml file.
+
+A link to example video:
+
+https://drive.google.com/file/d/18OIhHgJ_OJv319fpBq-4KTfdQxbmuzYG/view

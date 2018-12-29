@@ -24,7 +24,7 @@ export default class ImageObj {
   }
 
   scale(event) {
-    const scaleSpeed = 4;
+    const scaleSpeed = 2;
     this.scaleDiff = scaleSpeed * event.deltaY;
     this.sx -= this.scaleDiff;
     this.sy -= this.scaleDiff;
