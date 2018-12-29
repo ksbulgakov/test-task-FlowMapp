@@ -54,7 +54,6 @@ export default class Canvas {
     this.element.addEventListener(eventType, (event) => {
       const coordinates = this.countCoordinates(event);
 
-
       if (this.frame.isInLeftTopCaret(coordinates)) {
         this.element.addEventListener('mousemove', moves.leftTop);
       }
