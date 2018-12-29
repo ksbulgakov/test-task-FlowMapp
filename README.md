@@ -5,5 +5,17 @@
 
 ## Discription
 
-Test task from FlowMapp.
-The task is to build a function of croping and resizing images which will return a promise with croped image's blob.
+A task from FlowMapp.
+The task is to build a function for croping and resizing images. the function should return a promise with croped image's blob.
+
+To look at the result locally input into a terminal:
+
+```sh
+  git clone https://github.com/ksbulgakov/test-task-FlowMapp.git
+```
+
+And in the application folder:
+```sh
+  make build
+```
+Then open in your browser index.itml file.
