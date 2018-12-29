@@ -57,15 +57,12 @@ export default class Canvas {
       if (this.frame.isInLeftTopCaret(coordinates)) {
         this.element.addEventListener('mousemove', moves.leftTop);
       }
-
       if (this.frame.isInRightTopCaret(coordinates)) {
         this.element.addEventListener('mousemove', moves.rightTop);
       }
-
       if (this.frame.isInRightBottomCaret(coordinates)) {
         this.element.addEventListener('mousemove', moves.rightBottom);
       }
-
       if (this.frame.isInLeftBottomCaret(coordinates)) {
         this.element.addEventListener('mousemove', moves.leftBottom);
       }
@@ -193,13 +190,6 @@ export default class Canvas {
     event.preventDefault();
     event.stopPropagation();
     this.image.scale(event);
-    this.update();
-  }
-
-  scaleFrame(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.frame.scale(event);
     this.update();
   }
 
