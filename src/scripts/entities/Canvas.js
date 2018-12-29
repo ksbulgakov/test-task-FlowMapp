@@ -205,11 +205,12 @@ export default class Canvas {
 
   drawFrame() {
     this.ctx.strokeStyle = this.frame.color;
+    this.ctx.fillStyle = this.frame.color;
     this.ctx.strokeRect(...this.frame.drawFrameArguments);
-    this.ctx.strokeRect(...this.frame.leftTopCaretArguments);
-    this.ctx.strokeRect(...this.frame.rightTopCaretArguments);
-    this.ctx.strokeRect(...this.frame.rightBottomCaretArguments);
-    this.ctx.strokeRect(...this.frame.leftBottomCaretArguments);
+    this.ctx.fillRect(...this.frame.leftTopCaretArguments);
+    this.ctx.fillRect(...this.frame.rightTopCaretArguments);
+    this.ctx.fillRect(...this.frame.rightBottomCaretArguments);
+    this.ctx.fillRect(...this.frame.leftBottomCaretArguments);
   }
 
   drawImage() {

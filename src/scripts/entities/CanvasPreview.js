@@ -12,7 +12,6 @@ export default class CanvasPreview extends Canvas {
     });
   }
 
-
   drawPreview() {
     this.ctx.fillStyle = this.fillStyle;
     this.ctx.fillRect(0, 0, this.element.width, this.element.height);

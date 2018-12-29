@@ -1,16 +1,21 @@
 body {
-  background-color:#cccccc !important;
+  background-color:#E9FFE9 !important;
 }
 
 canvas {
-  margin: auto;
+
   margin-top: 10px;
   border: solid;
-  border-color: brown;
+  border-color: #91B292;
 }
 
 .btn {
   width: 100%;
+}
+
+#canvas {
+  border-radius: 5px;
+  background-color: #CCB7A6;
 }
 
 #uploader {
@@ -18,14 +23,25 @@ canvas {
 }
 
 #first-col {
-  background-color: #8a2be2;
+  width: 100%;
+  text-align:center;
+  border-radius: 5px;
 }
 
 #control-panel {
-  align-items: center;
-  background-color: rgb(43, 226, 134);
+  float: none;
+  margin: 0 auto;
+  background-color: #D9CFFF;
+  border-radius: 5px
 }
 
 #canvas-preview {
   width: 100%;
+  border-radius: 5px;
+}
+
+#messages {
+  font-family: 'Acme', sans-serif;
+  font-size: 28px;
+  text-emphasis-color: #B2A59A;
 }
