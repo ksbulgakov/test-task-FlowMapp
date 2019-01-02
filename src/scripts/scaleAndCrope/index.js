@@ -1,22 +1,40 @@
-import showMessage from './showMessage';
-import Canvas from '../entities/Canvas';
-import CanvasPreview from '../entities/CanvasPreview';
-import Frame from '../entities/Frame';
-import ImageObj from '../entities/ImageObj';
+import showMessage from './lib/showMessage';
+import isValid from './lib/isValid';
+import Canvas from './entities/Canvas';
+import CanvasPreview from './entities/CanvasPreview';
+import Frame from './entities/Frame';
+import ImageObj from './entities/ImageObj';
+
 
 export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
-  const imageEl = document.createElement('img');
-  imageEl.addEventListener('load', () => {
-    if (imageEl.naturalHeight > maxH || imageEl.naturalWidth > maxW) {
-      const messageText = `Maximum image height is ${maxH}px.
-        \nAnd maximum width is ${maxW}px`;
-      showMessage(messageText);
-      return;
-    }
-    resolve(imageEl);
+  const file = event.target.files[0];
+
+  if (!isValid(file)) {
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.addEventListener('load', (e) => {
+    resolve(e);
   });
-  imageEl.src = event.target.result;
+  reader.addEventListener('error', (e) => {
+    showMessage(e.target.error.message);
+  });
+  reader.readAsDataURL(file);
 })
+  .then(e => new Promise((resolve) => {
+    const imageEl = document.createElement('img');
+    imageEl.addEventListener('load', () => {
+      if (imageEl.naturalHeight > maxH || imageEl.naturalWidth > maxW) {
+        const messageText = `Maximum image height is ${maxH}px.
+          \nAnd maximum width is ${maxW}px`;
+        showMessage(messageText);
+        return;
+      }
+      resolve(imageEl);
+    });
+    imageEl.src = e.target.result;
+  }))
   .then(imageEl => new Promise((resolve) => {
     const canvasElement = document.getElementById('canvas');
     const previewEl = document.getElementById('canvas-preview');
@@ -48,5 +66,5 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
     saveButton.addEventListener('click', () => {
       previewEl.toBlob(resolve, 'image/png', '1');
     });
-  })) // .then(blob => console.log(blob))
+  })) // then(blob => console.log('blob', blob))
   .catch(error => showMessage(error.message));
