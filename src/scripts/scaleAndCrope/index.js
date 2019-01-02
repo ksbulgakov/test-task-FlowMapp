@@ -58,6 +58,7 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
     canvas.drawFrame();
     canvas.addScaleEvent('wheel');
     canvas.addDragCaretsEvent('mousedown');
+    // canvas.addDragFrameEvent('mousedown');
     canvas.addCursorCaretsEvent('mousemove');
     canvasPreview.drawImage();
     canvasPreview.addCropeEvent('mousedown', cropeButton);

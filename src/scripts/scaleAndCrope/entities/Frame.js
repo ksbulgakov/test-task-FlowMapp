@@ -1,6 +1,6 @@
-const isInCaret = (caret, coordinates) => {
-  if (caret[0] < coordinates.x && coordinates.x < caret[0] + caret[2]
-    && caret[1] < coordinates.y && coordinates.y < caret[1] + caret[3]) {
+const isInHandle = (handle, coordinates) => {
+  if (handle[0] < coordinates.x && coordinates.x < handle[0] + handle[2]
+    && handle[1] < coordinates.y && coordinates.y < handle[1] + handle[3]) {
     return true;
   }
   return false;
@@ -16,8 +16,8 @@ export default class Frame {
     this.height = height;
     this.minWidth = 50;
     this.minHeight = 50;
-    this.caretWidth = 10;
-    this.caretHeight = 10;
+    this.handleWidth = 10;
+    this.handleHeight = 10;
   }
 
   get drawFrameArguments() {
@@ -30,39 +30,39 @@ export default class Frame {
     return drawArguments;
   }
 
-  get leftTopCaretArguments() {
+  get leftTopHandleArguments() {
     return [
-      this.x - (this.caretWidth / 2),
-      this.y - (this.caretHeight / 2),
-      this.caretWidth,
-      this.caretHeight,
+      this.x - (this.handleWidth / 2),
+      this.y - (this.handleHeight / 2),
+      this.handleWidth,
+      this.handleHeight,
     ];
   }
 
-  get rightTopCaretArguments() {
+  get rightTopHandleArguments() {
     return [
-      (this.x + this.width) - (this.caretWidth / 2),
-      this.y - (this.caretHeight / 2),
-      this.caretWidth,
-      this.caretHeight,
+      (this.x + this.width) - (this.handleWidth / 2),
+      this.y - (this.handleHeight / 2),
+      this.handleWidth,
+      this.handleHeight,
     ];
   }
 
-  get rightBottomCaretArguments() {
+  get rightBottomHandleArguments() {
     return [
-      (this.x + this.width) - (this.caretWidth / 2),
-      (this.y + this.height) - (this.caretHeight / 2),
-      this.caretWidth,
-      this.caretHeight,
+      (this.x + this.width) - (this.handleWidth / 2),
+      (this.y + this.height) - (this.handleHeight / 2),
+      this.handleWidth,
+      this.handleHeight,
     ];
   }
 
-  get leftBottomCaretArguments() {
+  get leftBottomHandleArguments() {
     return [
-      this.x - (this.caretWidth / 2),
-      (this.y + this.height) - (this.caretHeight / 2),
-      this.caretWidth,
-      this.caretHeight,
+      this.x - (this.handleWidth / 2),
+      (this.y + this.height) - (this.handleHeight / 2),
+      this.handleWidth,
+      this.handleHeight,
     ];
   }
 
@@ -99,20 +99,20 @@ export default class Frame {
     this.y = coordinates.y;
   }
 
-  isInLeftTopCaret(coordinates) {
-    return isInCaret(this.leftTopCaretArguments, coordinates);
+  isInLeftTopHandle(coordinates) {
+    return isInHandle(this.leftTopHandleArguments, coordinates);
   }
 
-  isInRightTopCaret(coordinates) {
-    return isInCaret(this.rightTopCaretArguments, coordinates);
+  isInRightTopHandle(coordinates) {
+    return isInHandle(this.rightTopHandleArguments, coordinates);
   }
 
-  isInRightBottomCaret(coordinates) {
-    return isInCaret(this.rightBottomCaretArguments, coordinates);
+  isInRightBottomHandle(coordinates) {
+    return isInHandle(this.rightBottomHandleArguments, coordinates);
   }
 
-  isInLeftBottomCaret(coordinates) {
-    return isInCaret(this.leftBottomCaretArguments, coordinates);
+  isInLeftBottomHandle(coordinates) {
+    return isInHandle(this.leftBottomHandleArguments, coordinates);
   }
 
   changeWidth(delta) {

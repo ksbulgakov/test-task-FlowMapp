@@ -16,25 +16,25 @@ export default class Canvas {
     });
   }
 
-  addCursorCaretsEvent(eventType) {
+  addCursorHandlesEvent(eventType) {
     this.element.addEventListener(eventType, (event) => {
       const coordinates = this.countCoordinates(event);
 
-      if (this.frame.isInLeftTopCaret(coordinates)) {
+      if (this.frame.isInLeftTopHandle(coordinates)) {
         this.element.style.cursor = 'move';
         return;
       }
-      if (this.frame.isInRightTopCaret(coordinates)) {
-        this.element.style.cursor = 'move';
-        return;
-      }
-
-      if (this.frame.isInRightBottomCaret(coordinates)) {
+      if (this.frame.isInRightTopHandle(coordinates)) {
         this.element.style.cursor = 'move';
         return;
       }
 
-      if (this.frame.isInLeftBottomCaret(coordinates)) {
+      if (this.frame.isInRightBottomHandle(coordinates)) {
+        this.element.style.cursor = 'move';
+        return;
+      }
+
+      if (this.frame.isInLeftBottomHandle(coordinates)) {
         this.element.style.cursor = 'move';
         return;
       }
@@ -43,27 +43,27 @@ export default class Canvas {
     });
   }
 
-  addDragCaretsEvent(eventType) {
+  addDragHandlesEvent(eventType) {
     const moves = {
-      leftTop: this.moveLeftTopCater.bind(this),
-      rightTop: this.moveRightTopCater.bind(this),
-      rightBottom: this.moveRightBottomCater.bind(this),
-      leftBottom: this.moveLeftBottomCater.bind(this),
+      leftTop: this.moveLeftTopHandle.bind(this),
+      rightTop: this.moveRightTopHandle.bind(this),
+      rightBottom: this.moveRightBottomHandle.bind(this),
+      leftBottom: this.moveLeftBottomHandle.bind(this),
     };
 
     this.element.addEventListener(eventType, (event) => {
       const coordinates = this.countCoordinates(event);
 
-      if (this.frame.isInLeftTopCaret(coordinates)) {
+      if (this.frame.isInLeftTopHandle(coordinates)) {
         this.element.addEventListener('mousemove', moves.leftTop);
       }
-      if (this.frame.isInRightTopCaret(coordinates)) {
+      if (this.frame.isInRightTopHandle(coordinates)) {
         this.element.addEventListener('mousemove', moves.rightTop);
       }
-      if (this.frame.isInRightBottomCaret(coordinates)) {
+      if (this.frame.isInRightBottomHandle(coordinates)) {
         this.element.addEventListener('mousemove', moves.rightBottom);
       }
-      if (this.frame.isInLeftBottomCaret(coordinates)) {
+      if (this.frame.isInLeftBottomHandle(coordinates)) {
         this.element.addEventListener('mousemove', moves.leftBottom);
       }
     });
@@ -75,7 +75,7 @@ export default class Canvas {
     });
   }
 
-  moveLeftTopCater(event) {
+  moveLeftTopHandle(event) {
     const { x, y } = this.countCoordinates(event);
 
     let frameX = x;
@@ -106,7 +106,7 @@ export default class Canvas {
     this.update();
   }
 
-  moveRightTopCater(event) {
+  moveRightTopHandle(event) {
     const { x, y } = this.countCoordinates(event);
 
     let frameWidth = x - this.frame.x;
@@ -131,7 +131,7 @@ export default class Canvas {
     this.update();
   }
 
-  moveRightBottomCater(event) {
+  moveRightBottomHandle(event) {
     const { x, y } = this.countCoordinates(event);
 
     let frameWidth = x - this.frame.x;
@@ -154,7 +154,7 @@ export default class Canvas {
     this.update();
   }
 
-  moveLeftBottomCater(event) {
+  moveLeftBottomHandle(event) {
     const { x, y } = this.countCoordinates(event);
 
     let frameX = x;
@@ -207,10 +207,10 @@ export default class Canvas {
     this.ctx.strokeStyle = this.frame.color;
     this.ctx.fillStyle = this.frame.color;
     this.ctx.strokeRect(...this.frame.drawFrameArguments);
-    this.ctx.fillRect(...this.frame.leftTopCaretArguments);
-    this.ctx.fillRect(...this.frame.rightTopCaretArguments);
-    this.ctx.fillRect(...this.frame.rightBottomCaretArguments);
-    this.ctx.fillRect(...this.frame.leftBottomCaretArguments);
+    this.ctx.fillRect(...this.frame.leftTopHandleArguments);
+    this.ctx.fillRect(...this.frame.rightTopHandleArguments);
+    this.ctx.fillRect(...this.frame.rightBottomHandleArguments);
+    this.ctx.fillRect(...this.frame.leftBottomHandleArguments);
   }
 
   drawImage() {
