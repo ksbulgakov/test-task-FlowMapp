@@ -4,6 +4,7 @@ export default class CanvasPreview extends Canvas {
   constructor(element, image, frame, baseWidth, fillStyle, mainCanvasEl) {
     super(element, image, frame, baseWidth, fillStyle);
     this.mainCanvasEl = mainCanvasEl;
+    this.shift = 1;
   }
 
   addCropeEvent(eventType, button) {
@@ -21,8 +22,8 @@ export default class CanvasPreview extends Canvas {
     this.element.height = this.frame.height;
     this.ctx.drawImage(
       this.mainCanvasEl,
-      this.frame.x + 5, this.frame.y + 5,
-      this.frame.width - 5, this.frame.height - 5,
+      this.frame.x + this.shift, this.frame.y + this.shift,
+      this.frame.width - (2 * this.shift), this.frame.height - (2 * this.shift),
       dx, dy,
       this.element.width, this.element.height,
     );

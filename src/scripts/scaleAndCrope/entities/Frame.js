@@ -1,6 +1,6 @@
-const isInHandle = (handle, coordinates) => {
-  if (handle[0] < coordinates.x && coordinates.x < handle[0] + handle[2]
-    && handle[1] < coordinates.y && coordinates.y < handle[1] + handle[3]) {
+const isInRectangle = (rectangle, coordinates) => {
+  if (rectangle[0] < coordinates.x && coordinates.x < rectangle[0] + rectangle[2]
+    && rectangle[1] < coordinates.y && coordinates.y < rectangle[1] + rectangle[3]) {
     return true;
   }
   return false;
@@ -32,8 +32,8 @@ export default class Frame {
 
   get leftTopHandleArguments() {
     return [
-      this.x - (this.handleWidth / 2),
-      this.y - (this.handleHeight / 2),
+      this.x - this.handleWidth,
+      this.y - this.handleHeight,
       this.handleWidth,
       this.handleHeight,
     ];
@@ -41,8 +41,8 @@ export default class Frame {
 
   get rightTopHandleArguments() {
     return [
-      (this.x + this.width) - (this.handleWidth / 2),
-      this.y - (this.handleHeight / 2),
+      this.x + this.width,
+      this.y - this.handleHeight,
       this.handleWidth,
       this.handleHeight,
     ];
@@ -50,8 +50,8 @@ export default class Frame {
 
   get rightBottomHandleArguments() {
     return [
-      (this.x + this.width) - (this.handleWidth / 2),
-      (this.y + this.height) - (this.handleHeight / 2),
+      this.x + this.width,
+      this.y + this.height,
       this.handleWidth,
       this.handleHeight,
     ];
@@ -59,8 +59,8 @@ export default class Frame {
 
   get leftBottomHandleArguments() {
     return [
-      this.x - (this.handleWidth / 2),
-      (this.y + this.height) - (this.handleHeight / 2),
+      this.x - this.handleWidth,
+      this.y + this.height,
       this.handleWidth,
       this.handleHeight,
     ];
@@ -99,20 +99,24 @@ export default class Frame {
     this.y = coordinates.y;
   }
 
+  isInFrame(coordinates) {
+    return isInRectangle(this.drawFrameArguments, coordinates);
+  }
+
   isInLeftTopHandle(coordinates) {
-    return isInHandle(this.leftTopHandleArguments, coordinates);
+    return isInRectangle(this.leftTopHandleArguments, coordinates);
   }
 
   isInRightTopHandle(coordinates) {
-    return isInHandle(this.rightTopHandleArguments, coordinates);
+    return isInRectangle(this.rightTopHandleArguments, coordinates);
   }
 
   isInRightBottomHandle(coordinates) {
-    return isInHandle(this.rightBottomHandleArguments, coordinates);
+    return isInRectangle(this.rightBottomHandleArguments, coordinates);
   }
 
   isInLeftBottomHandle(coordinates) {
-    return isInHandle(this.leftBottomHandleArguments, coordinates);
+    return isInRectangle(this.leftBottomHandleArguments, coordinates);
   }
 
   changeWidth(delta) {

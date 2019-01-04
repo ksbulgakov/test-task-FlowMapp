@@ -24,6 +24,7 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
 })
   .then(e => new Promise((resolve) => {
     const imageEl = document.createElement('img');
+
     imageEl.addEventListener('load', () => {
       if (imageEl.naturalHeight > maxH || imageEl.naturalWidth > maxW) {
         const messageText = `Maximum image height is ${maxH}px.
@@ -33,6 +34,7 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
       }
       resolve(imageEl);
     });
+
     imageEl.src = e.target.result;
   }))
   .then(imageEl => new Promise((resolve) => {
@@ -46,7 +48,7 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
     const backgroundColor = '#CCB7A6';
     const frameHeight = 300;
     const framewidth = 300;
-    const frameColor = 'black';
+    const frameColor = 'white';
 
     const image = new ImageObj(imageEl);
     const frame = new Frame(frameColor, framewidth, frameHeight);
@@ -57,9 +59,8 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
     canvas.drawImage();
     canvas.drawFrame();
     canvas.addScaleEvent('wheel');
-    canvas.addDragCaretsEvent('mousedown');
-    // canvas.addDragFrameEvent('mousedown');
-    canvas.addCursorCaretsEvent('mousemove');
+    canvas.addDragHandlesEvent('mousedown');
+    canvas.addCursorFrameEvent('mousemove');
     canvasPreview.drawImage();
     canvasPreview.addCropeEvent('mousedown', cropeButton);
 

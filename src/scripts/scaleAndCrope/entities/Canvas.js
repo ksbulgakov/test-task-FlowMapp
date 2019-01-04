@@ -16,26 +16,30 @@ export default class Canvas {
     });
   }
 
-  addCursorHandlesEvent(eventType) {
+  addCursorFrameEvent(eventType) {
     this.element.addEventListener(eventType, (event) => {
       const coordinates = this.countCoordinates(event);
 
-      if (this.frame.isInLeftTopHandle(coordinates)) {
+      if (this.frame.isInFrame(coordinates)) {
         this.element.style.cursor = 'move';
         return;
       }
+      if (this.frame.isInLeftTopHandle(coordinates)) {
+        this.element.style.cursor = 'nw-resize';
+        return;
+      }
       if (this.frame.isInRightTopHandle(coordinates)) {
-        this.element.style.cursor = 'move';
+        this.element.style.cursor = 'ne-resize';
         return;
       }
 
       if (this.frame.isInRightBottomHandle(coordinates)) {
-        this.element.style.cursor = 'move';
+        this.element.style.cursor = 'se-resize';
         return;
       }
 
       if (this.frame.isInLeftBottomHandle(coordinates)) {
-        this.element.style.cursor = 'move';
+        this.element.style.cursor = 'sw-resize';
         return;
       }
 
@@ -45,6 +49,7 @@ export default class Canvas {
 
   addDragHandlesEvent(eventType) {
     const moves = {
+      frame: this.moveFrame.bind(this),
       leftTop: this.moveLeftTopHandle.bind(this),
       rightTop: this.moveRightTopHandle.bind(this),
       rightBottom: this.moveRightBottomHandle.bind(this),
@@ -54,6 +59,13 @@ export default class Canvas {
     this.element.addEventListener(eventType, (event) => {
       const coordinates = this.countCoordinates(event);
 
+      if (this.frame.isInFrame(coordinates)) {
+        const { x, y } = coordinates;
+        const thouchX = x - this.frame.coordinates.x;
+        const thouchY = y - this.frame.coordinates.y;
+        this.frame.thouchPoint = { x: thouchX, y: thouchY };
+        this.element.addEventListener('mousemove', moves.frame);
+      }
       if (this.frame.isInLeftTopHandle(coordinates)) {
         this.element.addEventListener('mousemove', moves.leftTop);
       }
@@ -73,6 +85,20 @@ export default class Canvas {
         this.element.removeEventListener('mousemove', move);
       });
     });
+  }
+
+  moveFrame(event) {
+    const { x, y } = this.countCoordinates(event);
+
+    const newX = x - this.frame.thouchPoint.x;
+    const newY = y - this.frame.thouchPoint.y;
+
+    this.frame.coordinates = {
+      x: newX,
+      y: newY,
+    };
+
+    this.update();
   }
 
   moveLeftTopHandle(event) {
