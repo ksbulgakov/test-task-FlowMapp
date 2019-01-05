@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" media="screen" href="src/styles/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Bangers|Monoton" rel="stylesheet"> 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
@@ -15,15 +16,17 @@
 </head>
 
 <body>
-  <div></div>
-  <div class="container" id="uploader">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-10" id="first-col">
+  <div id="head">
+    <p>Scale and Crope Your Image</p>
+  </div>
+  <div id="uploader">
+    <div class="flex-container">
+      <div class="flex-box" id="first-col">
         <canvas id="canvas" width="600" height="400">
-          An alternative text describing what your canvas displays.
+          Your browser does not support canvas element.
         </canvas>
       </div>
-      <div class="col-xs-12 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-0  col-lg-2" id="control-panel">
+      <div class="flex-box" id="control-panel">
         <canvas id="canvas-preview" height="300" width="300"></canvas>
         <input type="file" id="input" accept="image/jpeg, image/png, image/svg+xml">   
         <button id="crope-button" type="button" class="btn btn-primary">Crope</button>

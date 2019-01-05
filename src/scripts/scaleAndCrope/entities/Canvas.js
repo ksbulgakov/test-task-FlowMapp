@@ -32,12 +32,10 @@ export default class Canvas {
         this.element.style.cursor = 'ne-resize';
         return;
       }
-
       if (this.frame.isInRightBottomHandle(coordinates)) {
         this.element.style.cursor = 'se-resize';
         return;
       }
-
       if (this.frame.isInLeftBottomHandle(coordinates)) {
         this.element.style.cursor = 'sw-resize';
         return;
@@ -47,7 +45,7 @@ export default class Canvas {
     });
   }
 
-  addDragHandlesEvent(eventType) {
+  addDragFrameEvent(eventType) {
     const moves = {
       frame: this.moveFrame.bind(this),
       leftTop: this.moveLeftTopHandle.bind(this),

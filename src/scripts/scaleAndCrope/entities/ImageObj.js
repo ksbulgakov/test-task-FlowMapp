@@ -35,4 +35,9 @@ export default class ImageObj {
   get imageProportions() {
     return this.height / this.width;
   }
+
+  set coordinates(coordinates) {
+    this.dx = coordinates.x;
+    this.dy = coordinates.y;
+  }
 }

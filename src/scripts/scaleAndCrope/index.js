@@ -45,7 +45,7 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
 
     const baseCanvasWidth = 600;
     const basePreWidth = 300;
-    const backgroundColor = '#CCB7A6';
+    const backgroundColor = '#C7E6ED';
     const frameHeight = 300;
     const framewidth = 300;
     const frameColor = 'white';
@@ -59,7 +59,7 @@ export default (maxW = 300, maxH = 300) => event => new Promise((resolve) => {
     canvas.drawImage();
     canvas.drawFrame();
     canvas.addScaleEvent('wheel');
-    canvas.addDragHandlesEvent('mousedown');
+    canvas.addDragFrameEvent('mousedown');
     canvas.addCursorFrameEvent('mousemove');
     canvasPreview.drawImage();
     canvasPreview.addCropeEvent('mousedown', cropeButton);
